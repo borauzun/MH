@@ -1,0 +1,68 @@
+ons-list-item > ons-icon {
+  margin: 0 4px 0 0;
+  opacity: 0.8;
+}
+
+.list-item-action {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  font-size: 20px;
+  opacity: 0.3;
+}
+
+.list-item-action > ons-icon {
+  margin-top: 14px;
+}
+@media only screen and (max-width: 768px) {
+  [class*="list-item-note"] {
+    width: 2em;
+    line-height: 2.2em;
+    top:15px !important;
+  }
+}
+.list-item-note {
+  position: absolute;
+  right: 36px;
+  margin-top:10px;
+  top: 43px;
+}
+
+
+.notification {
+  margin: 2px 2px 1px 1px;
+}
+
+
+.btn-inc-r{
+  border: transparent;
+  background: transparent;
+}    
+
+.btn-dec-r{
+  border: transparent;
+  background: transparent;
+}
+
+@media only screen and (max-width: 768px) {
+  [class*="count-numb"] {
+    display: ruby-base-container;
+    margin: -8px !important;
+    padding-left: 12px !important;
+  }
+}
+
+.count-numb {
+  text-align: center;
+  width: 53px;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  padding-left: 12px;
+  padding-right: 14px;
+}
+
+
+.lucent {
+  opacity: 0.4;
+}
