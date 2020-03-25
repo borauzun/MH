@@ -826,6 +826,63 @@
 					"response": []
 				},
 				{
+					"name": "register Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "05c9b687-e08c-4bea-91a1-ba61ca506180",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\" : {\n  \t\"venueName\":\"Matyat Restaurant\",\n    \"name\" : \"Bora\",\n    \"lastName\" : \"Uzun\",\n    \"knownAs\" : \"Bora\",\n    \"gender\" : \"MALE\",\n    \"email\" : \"bora@borauzun.net\",\n    \"phone\" : \"+447856874102\",\n    \"dobYear\" : 1979,\n    \"dobMonth\" : 3,\n    \"dobDay\" : 6\n  },\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/Auth/registerCustomer",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"registerCustomer"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
 					"name": "register user sample 1(minimal-)",
 					"request": {
 						"method": "POST",
