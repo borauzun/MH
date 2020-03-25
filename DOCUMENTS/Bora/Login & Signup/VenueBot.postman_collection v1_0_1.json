@@ -40,19 +40,113 @@
 					"name": "GetVenueList",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"x\" : 12,\n  \"y\" : 14,\n  \"z\" : 25\n}"
 						},
 						"url": {
-							"raw": "http://45.40.135.209:8090/general/getVenues",
+							"raw": "http://localhost:8090/general/getVenues",
 							"protocol": "http",
 							"host": [
-								"45",
-								"40",
-								"135",
-								"209"
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"getVenues"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "GetVenueList Search",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 12\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/general/getVenues",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"getVenues"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "GetVenueList Search (no result)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/general/getVenues",
+							"protocol": "http",
+							"host": [
+								"localhost"
 							],
 							"port": "8090",
 							"path": [
@@ -218,6 +312,60 @@
 							"path": [
 								"Auth",
 								"registerCustomer"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "register Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "05c9b687-e08c-4bea-91a1-ba61ca506180",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\" : {\n  \t\"venueName\":\"Matyat Restaurant\",\n    \"name\" : \"Bora\",\n    \"lastName\" : \"Uzun\",\n    \"knownAs\" : \"Bora\",\n    \"gender\" : \"MALE\",\n    \"email\" : \"bora@borauzun.net\",\n    \"phone\" : \"+447856874102\",\n    \"dobYear\" : 1979,\n    \"dobMonth\" : 3,\n    \"dobDay\" : 6\n  },\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/Auth/registerBusiness",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"registerBusiness"
 							]
 						},
 						"description": "When the mobile app initiates login very first time By Phone"
@@ -393,10 +541,113 @@
 					"name": "GetVenueList",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"x\" : 12,\n  \"y\" : 14,\n  \"z\" : 25\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/general/getVenues",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"getVenues"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "GetVenueList Search",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 12\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/general/getVenues",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"getVenues"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "GetVenueList Search (no result)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 2\n}"
 						},
 						"url": {
 							"raw": "http://45.40.135.209:8090/general/getVenues",
