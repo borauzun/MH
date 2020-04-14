@@ -1379,7 +1379,7 @@
 							"raw": "{\n  \"venueId\" : 2\n}"
 						},
 						"url": {
-							"raw": "http://94.237.42.142:8090/general/getMenu/1",
+							"raw": "http://94.237.42.142:8090/general/confirmItemStock/{venueId}/{sku}",
 							"protocol": "http",
 							"host": [
 								"94",
@@ -1389,10 +1389,10 @@
 							],
 							"port": "8090",
 							"path": [
-								"",
 								"general",
-								"getMenu",
-								"1"
+								"confirmItemStock",
+								"{venueId}",
+								"{sku}"
 							],
 							"query": [
 								{
