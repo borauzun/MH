@@ -1,0 +1,1091 @@
+{
+	"info": {
+		"_postman_id": "f00ee277-642d-42fd-8c29-5e186d5cffb6",
+		"name": "VenueBot (Metehan)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RestAPI SERVER(NEW)",
+			"item": [
+				{
+					"name": "health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://94.237.42.142:8090/Auth/health",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"health"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "1a_register user sample 1(full) (+)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "08e75645-db7b-423b-94ae-84d3cb16ea07",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\" : {\n    \"name\" : \"Bora\",\n    \"lastName\" : \"Uzun\",\n    \"knownAs\" : \"Bora\",\n    \"gender\" : \"MALE\",\n    \"email\" : \"bora@borauzun.net\",\n    \"phone\" : \"+447856874102\",\n    \"dobYear\" : 1979,\n    \"dobMonth\" : 3,\n    \"dobDay\" : 6\n  },\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/Auth/registerCustomer",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"registerCustomer"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "1c_register Business(+)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2c63a67d-c1b8-43ba-bc3b-7d9f56058f8d",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\" : {\n  \t\"venueName\":\"Matyat Restaurant\",\n    \"name\" : \"Bora\",\n    \"lastName\" : \"Uzun\",\n    \"knownAs\" : \"Bora\",\n    \"gender\" : \"MALE\",\n    \"email\" : \"bora@borauzun.net\",\n    \"phone\" : \"+447856874102\",\n    \"dobYear\" : 1979,\n    \"dobMonth\" : 3,\n    \"dobDay\" : 6\n  },\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/Auth/registerBusiness",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"registerBusiness"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "2a_initiate login by email (+)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "71827334-b3b5-43ba-945e-44b983b2e968",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"firstToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "customer-mobile"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\" : \"bora@borauzun.net\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"venuebot\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/Auth/initiateLogin",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"initiateLogin"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By e-mail"
+					},
+					"response": []
+				},
+				{
+					"name": "2b_initiate login By Phone (+)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a91ed96e-574e-44b3-a075-441b057494b1",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"firstToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "client_Id",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "x-ip-address",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\" : \"+447856874102\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"venuebot\",\n  \"loginDevice\" : \"MOBILE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/Auth/initiateLogin",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"initiateLogin"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "3_AuthRequest(otp,firsttoken,facebook token) (+)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{firstToken}}"
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"otp\" : \"0000\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"venuebot\",\n  \"loginDevice\" : \"MOBILE\"\n}\n"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/Auth/getAuthStatus",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"getAuthStatus"
+							]
+						},
+						"description": "only the mandatory fields"
+					},
+					"response": []
+				},
+				{
+					"name": "(IPTAL) AuthRequest(autologin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "d1d9c20a-764e-4bf6-a85e-42150515436f"
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "customer-mobile"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"otp\" : \"*11***\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/Auth/getAuthStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"getAuthStatus"
+							]
+						},
+						"description": "only the mandatory fields"
+					},
+					"response": []
+				},
+				{
+					"name": "4_GetVenueList by Location(+)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"x\" : 32,\n  \"y\" : 39,\n  \"z\" : 25\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/getVenues",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"getVenues"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "5_GetVenueList by Search (+)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 1\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/getVenues",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"getVenues"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "5b_GetVenueList Search (no result)(+)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 6161\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/getVenues",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"getVenues"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "6_GetMenuForVenue (+)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 1\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/getMenu/1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"getMenu",
+								"1"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "7_StockCheck (+) [UPDATED]",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/confirmItemStock/1/1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"confirmItemStock",
+								"1",
+								"1"
+							],
+							"query": [
+								{
+									"key": " ",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "8_Order ( Table ) Copy (+) (UPDATED)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75e5368d-d6b6-474c-a451-1be869697843",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 1,\n  \"customerId\" : 1,\n  \"orderType\" : \"TABLE\",\n  \"tableNo\" : \"122\",\n  \"products\" : [ {\n    \"sku\" : \"1\",\n    \"size\" : {\n      \"unit\" : \"1 Portion\",\n      \"price\" : 24.0,\n      \"inStock\" : false\n    },\n    \"preference\" : {\n      \"question\" : \"How cooked?\",\n      \"choice\" : \"medium\"\n    },\n    \"suggestion\" : {\n      \"question\" : \"\",\n      \"statement\" : \"\",\n      \"priceDifference\" : 2.0\n    },\n    \"addOns\" : [ {\n      \"addOnId\":1,\n      \"name\" : \"Chips\",\n      \"price\" : 1.0\n    }],\n    \n    \"numberOfOrder\" : 2\n  } ]\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/order/order",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"order",
+								"order"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "9_ Check Order Status (+)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/order/OrderStatus/8",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"order",
+								"OrderStatus",
+								"8"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "14_GetOrders (Order Queries) - Simple",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\" : 1\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8000/VenueBotDAL/orderQueriesCustomer/",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8000",
+							"path": [
+								"VenueBotDAL",
+								"orderQueriesCustomer",
+								""
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "14_GetOrders (Order Queries) - Detailed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\" : 1,\n  \"venueId\" : 1,\n  \"dateStart\" : \"01.01.2020\",\n  \"dateEnd\" : \"31.12.2020\"\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8000/VenueBotDAL/orderQueriesCustomer/",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8000",
+							"path": [
+								"VenueBotDAL",
+								"orderQueriesCustomer",
+								""
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "10_Get Customer Info (+)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 2\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/customerInfo/1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"customerInfo",
+								"1"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "10b_Get Customer Info With Addresses (+) Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venueId\" : 2\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/customerInfo/1?withAdr=1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"customerInfo",
+								"1"
+							],
+							"query": [
+								{
+									"key": "withAdr",
+									"value": "1"
+								},
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "11_Update Customer Info (+)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": 1,\n    \"name\": \"Bora\",\n    \"lastName\": \"Uzun\",\n    \"email\": \"bora@borauzun.net\",\n    \"gender\": \"Male\",\n    \"dob\": \"06.03.1979\",\n    \"phone\": \"0777\"\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/customerInfo/1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"customerInfo",
+								"1"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "12_Get Address Info(+)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/addressInfo/1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"addressInfo",
+								"1"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "13_Update Address Info (+)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"addressId\": 1,\n    \"addressName\": \"test address\",\n    \"line1\": \"28 Kenilworth Court\",\n    \"line2\": \"Hempstead Road\",\n    \"town\": \"Watford\",\n    \"postcode\": \"WD17 4LE\"\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/addressInfo/1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"addressInfo",
+								"1"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "13_ADD new Address (+)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": 1,\n    \"addressName\": \"test address2\",\n    \"line1\": \"Kenilworth Court2\",\n    \"line2\": \"Hempstead Road\",\n    \"town\": \"Watford\",\n    \"postcode\": \"WD17\"\n}"
+						},
+						"url": {
+							"raw": "http://94.237.42.142:8090/general/addressInfo/1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"237",
+								"42",
+								"142"
+							],
+							"port": "8090",
+							"path": [
+								"general",
+								"addressInfo",
+								"1"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
